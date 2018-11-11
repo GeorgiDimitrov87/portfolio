@@ -1,14 +1,14 @@
- <!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
-    {% load staticfiles %}
+	{% load staticfiles %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Georgi Dimitrov</title>
+    <title>{{ blog.title }}</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -21,7 +21,7 @@
 
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="{% url 'home' %}">Georgi Dimitrov</a>
+        <a class="navbar-brand" href="{% url 'home' %}">Georgi's Blog</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -31,7 +31,7 @@
                 <a class="nav-item nav-link" href="https://github.com/GeorgiDimitrov87">GitHub</a>
                 <a class="nav-item nav-link" href="https://www.linkedin.com/in/georgi-dimitrov/">Linkedin</a>
                 <a class="nav-item nav-link" href="{% static 'GeorgiDimitrovResume.pdf' %}">Resume</a>
-                <a class="nav-item nav-link" href="{% url 'allblogs' %}">Blog</a>
+                <a class="nav-item nav-link active"href="{% url 'allblogs' %}"</a>
 
             </div>
         </div>
@@ -39,41 +39,19 @@
 </header>
 
 <main role="main">
+    
+    <div class="container">
 
-    <section class="jumbotron text-center">
-        <div class="container">
-            <h1 class="jumbotron-heading">Wellcome to my site</h1>
-            <p class="lead text-muted">My name is Georgi Dimitrov and I love to build websites and to automate processes. I specialise in Python Fullstack Development, Machine Learning, AI and Blockchain </p>
-            <p>
-                <a href="mailto:gdimitrovau@gmail.com" class="btn btn-primary my-2">Email Me</a>
 
-            </p>
-            <img src="{% static 'joro.jpg' %}" height='300' />
-        </div>
-    </section>
+   
+    <h1 class="text-center pt-3">{{ blog.title }}</h1>
+    <p class="text-center">{{ blog.pub_date_pretty }}</p>
+    <img class="img-fluid" src="{{ blog.image.url}}" 
+    <br />
+    <p>{{ blog.body }}</p>
+  
 
-    <div class="album py-5 bg-light">
-        <div class="container">
-
-            <div class="row">
-
-                {%for job in jobs.all%}
-                <div class="col-md-4">
-                    <div class="card mb-4 shadow-sm">
-                        <img class="card-img-top" src="{{job.image.url}}" />
-                        <div class="card-body">
-                            <p class="card-text">{{ job.summary }}</p>
-
-                            </div>
-                        </div>
-                    </div>
-                    {%endfor%}
-                </div>
-
-            </div>
-        </div>
     </div>
-
 </main>
 
 <footer class="text-muted">
